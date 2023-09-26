@@ -1,7 +1,12 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View ,Image,} from 'react-native';
 import moment from 'moment/moment';
+import {NavigationContainer} from '@react-navigation/native'
+import {createNativeStackNavigator} from '@react-navigation/native-stack';
+import * as React from 'react';
 
+
+const Stack = createNativeStackNavigator();
 
 export default function App() {
   
@@ -9,18 +14,47 @@ export default function App() {
   var date = moment().utcOffset('+5:30').format('YYYY-MM-DD hh:mm:ss a');
 
   return (
+
+    <NavigationContainer>
+    <Stack.Navigator>
+        <Stack.Screen
+          name="Home"
+          component={HomeScreen}
+          options={{title: 'Welcome'}}
+        />
+        <Stack.Screen name="Info" component={ProfileScreen} />
+      </Stack.Navigator>
+      
+  
+    </NavigationContainer>
+  );
+
+}
+
+const HomeScreen = ({navigation}) => {
+  return (
     <View style={styles.container}>
       <Text style ={textStyles}> Welcome to the MoHi Schedule App!</Text>
 
       
       <Text style = {textStyles}> Today's Date: {date} </Text>
      
-      <Image style = {styles.image} source={require("./assets/info.png")} />
+      <Image style = {styles.image} source={require("./assets/info.png")} onPress={() => navigation.navigate('ProfileScreen', {name: 'Info'})} />
       <StatusBar style="auto" />
     </View>
   );
 
-}
+};
+
+const ProfileScreen = ({navigation}) => {
+
+  return(
+    <View style= {styles.container}>
+      <Text style = {textStyles}> Test Screen </Text>
+    </View>
+
+  );
+};
 
 const textStyles = {color : '#FFD700'};
 
