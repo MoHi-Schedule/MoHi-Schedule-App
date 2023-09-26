@@ -1,5 +1,5 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View ,Image,} from 'react-native';
+import { StyleSheet, Text, View ,Image, Pressable,} from 'react-native';
 import moment from 'moment/moment';
 import {NavigationContainer} from '@react-navigation/native'
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
@@ -11,7 +11,7 @@ const Stack = createNativeStackNavigator();
 export default function App() {
   
 
-  var date = moment().utcOffset('+5:30').format('YYYY-MM-DD hh:mm:ss a');
+ 
 
   return (
 
@@ -19,10 +19,11 @@ export default function App() {
     <Stack.Navigator>
         <Stack.Screen
           name="Home"
-          component={HomeScreen}
+          component={Home}
           options={{title: 'Welcome'}}
         />
-        <Stack.Screen name="Info" component={ProfileScreen} />
+
+        <Stack.Screen name="Info" component={Info} />
       </Stack.Navigator>
       
   
@@ -31,26 +32,29 @@ export default function App() {
 
 }
 
-const HomeScreen = ({navigation}) => {
+const Home = ({navigation}) => {
+  var date = moment().utcOffset('+5:30').format('YYYY-MM-DD hh:mm:ss a');
   return (
     <View style={styles.container}>
       <Text style ={textStyles}> Welcome to the MoHi Schedule App!</Text>
 
       
       <Text style = {textStyles}> Today's Date: {date} </Text>
-     
-      <Image style = {styles.image} source={require("./assets/info.png")} onPress={() => navigation.navigate('ProfileScreen', {name: 'Info'})} />
+
+      <Pressable onPress={() => navigation.navigate('Info', {name: 'Info'})}>
+      <Image style = {styles.image} source={require("./assets/info.png")}  />
+      </Pressable>
       <StatusBar style="auto" />
     </View>
   );
 
 };
 
-const ProfileScreen = ({navigation}) => {
+const Info = ({navigation}) => {
 
   return(
     <View style= {styles.container}>
-      <Text style = {textStyles}> Test Screen </Text>
+      <Text onPress ={() => navigation.navigate('Home',{name: 'Home'})}style = {textStyles}> Test Screen </Text>
     </View>
 
   );
@@ -73,9 +77,7 @@ const styles = StyleSheet.create({
     width : 50, 
     height: 50,
     position: 'absolute',
-      left: 20,
-      top: 50,
-      bottom: 0,
-      right: 0
+      left: -180,
+      top: -350,
   }
 });
