@@ -5,19 +5,21 @@ export default class Period{
     start;
     end;
     periodNumber;
-
+    timeperclass;
+    starttime;
     constructor(per,s,e){
         periodNumber = [per];
         start = [s];
         end = [e];
     }
+
     getPeriodNumber(){
         return periodNumber;
     }
     setPeriodNumber(per){
         periodNumber = [per]
     }
-    getArray(){
+    getTime(){
         return <Text> {start} - {end} </Text>;
     }
 
@@ -35,4 +37,5 @@ export default class Period{
     getEnd(){
         return {end};    
     }
+
 }

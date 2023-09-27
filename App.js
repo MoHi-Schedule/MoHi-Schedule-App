@@ -33,18 +33,22 @@ const Home = ({navigation}) => {
 
   var date = moment().utcOffset('+5:30').format('YYYY-MM-DD hh:mm:ss a');
 
-  var per = new Period(["1st"],["8:35"],["9:27"]);
+  var per1 = new Period(["1st"],["8:35"],["9:27"]);
+  var per2 = new Period(["2nd"],["9:32"], ["10:25"])
   
-  var perArray = per.getArray();
+  var per1Array = per1.getTime();
 
-  var startValue = Object.values(per.getStart());
+  var startValue = Object.values(per1.getStart());
 
 
   return (
     <View style={styles.container}>
+    <Text> {per1.getPeriodNumber()} </Text>
       <Text style ={textStyles}> Welcome to the MoHi Schedule App!</Text>
-      <Text style = {styles}> {per.getPeriodNumber()} Period {'\n'} 
-      Time: {perArray} </Text>
+      <Text style = {styles}> {per1.getPeriodNumber()} Period {'\n'} 
+      Time: {per1.getTime()} </Text>
+      <Text style = {styles}> {per2.getPeriodNumber()} Period {'\n'} 
+      Time: {per2.getTime()} </Text>
       
 
       <Text style = {textStyles}> Today's Date: {date} </Text>
