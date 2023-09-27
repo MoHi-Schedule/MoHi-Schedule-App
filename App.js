@@ -33,16 +33,19 @@ const Home = ({navigation}) => {
 
   var date = moment().utcOffset('+5:30').format('YYYY-MM-DD hh:mm:ss a');
 
-  var test = new Period([8,35],[9,27]);
+  var per = new Period([8,35],[9,27]);
   
-  var test1 = test.getArray();
+  var perArray = per.getArray();
+
+  var startValue = Object.values(per.getStart());
+
 
   return (
     <View style={styles.container}>
       <Text style ={textStyles}> Welcome to the MoHi Schedule App!</Text>
 
-      <Text style = {textStyles}> Period 1 Time: {test1} </Text>
-
+      <Text style = {textStyles}> Period 1 Time: {perArray} </Text>
+      
 
       <Text style = {textStyles}> Today's Date: {date} </Text>
 

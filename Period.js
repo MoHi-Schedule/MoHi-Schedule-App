@@ -21,4 +21,11 @@ export default class Period{
         end = [e];    
     }
 
+    getStart(){
+        return {start};    
+    }
+
+    getEnd(){
+        return {end};    
+    }
 }
