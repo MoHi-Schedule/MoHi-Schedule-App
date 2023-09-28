@@ -4,7 +4,8 @@ import moment from 'moment/moment';
 import {NavigationContainer} from '@react-navigation/native'
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import * as React from 'react';
-import Period from './Period';
+import {Period} from './Data';
+
 
 const Stack = createNativeStackNavigator();
 
@@ -32,23 +33,23 @@ export default function App() {
 const Home = ({navigation}) => {
 
   var date = moment().utcOffset('+5:30').format('YYYY-MM-DD hh:mm:ss a');
-
-  var per1 = new Period(["1st"],["8:35"],["9:27"]);
-  var per2 = new Period(["2nd"],["9:32"], ["10:25"])
   
-  var per1Array = per1.getTime();
-
-  var startValue = Object.values(per1.getStart());
-
+  const per1 = Period("1st", "8:35", "9:27");
+  const per2 = Period("2nd", "9:32", "10:25");
+  const schedule = [per1, per2];
 
   return (
     <View style={styles.container}>
-    <Text> {per1.getPeriodNumber()} </Text>
+    
       <Text style ={textStyles}> Welcome to the MoHi Schedule App!</Text>
-      <Text style = {styles}> {per1.getPeriodNumber()} Period {'\n'} 
-      Time: {per1.getTime()} </Text>
-      <Text style = {styles}> {per2.getPeriodNumber()} Period {'\n'} 
-      Time: {per2.getTime()} </Text>
+      
+      {schedule.map(period=>{
+      return(
+        <Text key = {period.periodNumber} style = {styles}> 
+        {period.periodNumber} Period {'\n'} 
+        Time: {period.startTime} - {period.endTime} 
+        </Text>
+      )})}
       
 
       <Text style = {textStyles}> Today's Date: {date} </Text>
