@@ -1,4 +1,6 @@
- 
+import {Period, PeriodBox} from './Data'
+import { StyleSheet, Text, View ,Image, Pressable,} from 'react-native';
+
 export const Home = () => {
     //hardcoding all 7 period variables
   const per1 = Period("1st", "8:35", "9:27");
@@ -12,15 +14,19 @@ export const Home = () => {
   const schedule = [per1, per2, per3, per4, per5, per6, per7];
     return(
     <View>
-    {schedule.map(periods =>{
+    {schedule.map(per =>{
         return(
-        <Text>
-        {period.periodNumber} Period {'\n'} 
-        Time: {period.startTime} - {period.endTime}  
-        </Text>
+          //assign PeriodBox values
+          <PeriodBox 
+          period = {per.periodNumber} 
+          start = {per.startTime} 
+          end = {per.endTime}  
+            
+          /> 
         )})}
     </View>
     )   
     
 
 }
+
