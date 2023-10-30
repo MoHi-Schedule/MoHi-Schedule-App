@@ -18,7 +18,7 @@ export const PeriodBox = function (props) {
         {props.period} Period {'\n'} 
         </Text>
         <Text style = {descriptorText}>
-        Time: {props.start} - {props.end}  
+         {props.start} - {props.end}  
         </Text>
     </View>
     )
@@ -26,28 +26,30 @@ export const PeriodBox = function (props) {
 }
 
 const descriptorText = {
-        color: '#FFFFFF',
-        fontSize: '25px',
-        fontFamily: 'OpenSans',
-        fontWeight: 'bold',
-        paddingLeftnpm: '55px',
+        bottom: 15,
+        color: '#878787',
+        fontSize: 20,
+        fontFamily: 'Arial',
+        textAlign: 'center',
 }
 const headerText= {
-      color: '#FF',
-      fontSize: '30px',
-      fontFamily: 'OpenSans',
-      paddingLeft: '40px',
-      fontWeight: 'bolder',
+      top: 7,
+      color: '#FFFFFF',
+      fontSize: 25,
+      fontFamily: 'Arial',
+      textAlign: 'center',
+
     };
 const periodBox = {
-        flex: '1',
-        justifyContent: 'center',
-        backgroundColor: '#D4AF37',
+        backgroundColor: '#222222',
         marginBottom: 12,
-        width: 300,
-        height: 300,
+        width: 370,
         shadowOffset: { height: 4, width: 0 },
         shadowOpacity: 1,
         shadowRadius: 4,
-        shadowColor: '#00000040'
+        shadowColor: '#00000040',
+        borderRadius: 15,
+        justifyContent: 'center',
+        marginLeft: 10,
+        marginRight: 10, 
       };
