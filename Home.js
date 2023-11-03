@@ -2,7 +2,7 @@ import {Period, PeriodBox, currentDay} from './Data'
 import moment from 'moment/moment';
 import { ScrollView, StyleSheet, Text, View ,Image, Pressable,} from 'react-native';
 
-export const Home = () => {
+export const Home = ({navigation}) => {
     //hardcoding all 7 period variables
   const per1 = Period("1st", "8:35", "9:27");
   const per2 = Period("2nd", "9:32", "10:24");
@@ -16,7 +16,13 @@ export const Home = () => {
   const day = currentDay();
     return(
     <ScrollView style = {styles.background}>
-    
+        <View style = {styles.image}>
+
+          <Pressable onPress={() => navigation.navigate('TimeLeft', {name: 'TimeLeft'})}>
+           <Image style = {styles.image} source={require("./assets/info.png")}  />
+          </Pressable>
+
+        </View>
         <View style = {styles.headerBox}>
           <Text style = {styles.headerText}>
             Monarch Highschool Schedule
@@ -78,5 +84,13 @@ dayText: {
   fontSize: 25,
   fontWeight: '400',
   textAlign: 'center',
-}
-})
+},
+image:{
+  width : 50, 
+  height: 50,
+  position: 'absolute',
+  top : 370,  
+  down : 30,
+  right : 150,
+  left : 150,
+}})
