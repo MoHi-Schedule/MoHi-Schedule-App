@@ -1,10 +1,6 @@
-import { StatusBar } from 'expo-status-bar';
-import {Text, View ,Image, Pressable} from 'react-native';
-import moment from 'moment/moment';
 import {NavigationContainer} from '@react-navigation/native'
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import * as React from 'react';
-import {Period} from './Data';
 import {Home} from './Home';
 
 
@@ -15,7 +11,8 @@ export default function App() {
 
     <NavigationContainer>
     <Stack.Navigator screenOptions =
-    {{cardStyle: {backgroundColor: 'blue'}}}>
+    {{headerShown: false}}
+>
         <Stack.Screen
           name="Home"
           component={Home}
