@@ -19,23 +19,23 @@ export const TimeLeft = ({navigation}) => {
 
   const schedule = [per1, per2, per3, per4, per5, per6, per7];
 
-  var i = 1;
-
+  let i = 1;
+  let periodNow = 0;
   for(let Period of schedule){
     
     if(Period.currentPeriod){
        periodNow = i;
        break;
     }
-
     i++;
   }
 
   let hours = new Date().getHours(); 
   const min = new Date().getMinutes(); 
-
-  sTime = schedule[periodNow -1].startTime;
-  eTime = schedule[periodNow -1].endTime;
+  //temporary fix to check if there is a current period
+  if(periodNow != 0){
+  sTime = schedule[periodNow -1].startTime
+  eTime = schedule[periodNow -1].endTime
 
   const splitStart = sTime.split(":");
   const splitEnd = eTime.split(":");
@@ -52,20 +52,28 @@ export const TimeLeft = ({navigation}) => {
   }
 
   var currentTime = (hours * 60) + min;
-
 return (
+  <View>
+    <Text style = {styles.dayText}> The Current Period is {periodNow} </Text>
 
-    <View>
-        <Text style = {styles.dayText}> The Current Period is {periodNow} </Text>
-        <Text style = {styles.dayText}> {end - currentTime} Minutes Left</Text>
-
-        
+    <Text style = {styles.dayText}> {end - currentTime} Minutes Left</Text>
 
     <Pressable onPress={() => navigation.navigate('Home', {name: 'Home'})}>
       <Image style = {styles.image} source={require("./assets/info.png")}  />
-      </Pressable>
-      </View>
-);
+    </Pressable>
+  </View>
+)}
+//temporary different screen if there is no current period
+else
+{return (
+  <View>
+    <Text style = {styles.dayText}> School is done for today </Text>
+
+    <Pressable onPress={() => navigation.navigate('Home', {name: 'Home'})}>
+      <Image style = {styles.image} source={require("./assets/info.png")}  />
+    </Pressable>
+  </View>
+)}
 
 }
 
