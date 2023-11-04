@@ -77,21 +77,20 @@ else
 
 }
 
-
 const styles = StyleSheet.create({ 
-    image:{
-        width : 50, 
-        height: 50,
-        position: 'absolute',
-          left: 20,
-          top: 100,
-          bottom: 0,
-          right: 0,
-},dayText: {
+  image:{
+    width : 50, 
+    height: 50,
+    position: 'absolute',
+    left: 150,
+    right: 150,
+    top: 370,
+},
+  dayText: {
     top : 50,
     textAlign :'center',
     color: '#000000',
     fontFamily: 'Arial',
     fontSize: 25,
-    
-  },})
+},
+})

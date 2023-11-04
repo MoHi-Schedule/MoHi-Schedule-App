@@ -85,12 +85,12 @@ dayText: {
   fontWeight: '400',
   textAlign: 'center',
 },
-image:{
+image: {
   width : 50, 
   height: 50,
   position: 'absolute',
   top : 370,  
-  down : 30,
   right : 150,
   left : 150,
-}})
+}
+})
