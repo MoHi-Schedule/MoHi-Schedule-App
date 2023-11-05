@@ -1,107 +1,127 @@
-import {Text, View, StyleSheet} from 'react-native';
+import { Text, View, StyleSheet } from 'react-native';
 import moment from 'moment/moment';
-export const Period = function (periodNum, sTime, eTime) {
-  const splitStart = sTime.split(":");
-  const splitEnd = eTime.split(":");
-  //fixes abnormal case for when hour changes from 12 to 1
-  if(splitStart[0] == 12)
-  {splitStart[0] = splitStart[0] - 12}
-  if(splitStart[0] == 12 && splitEnd[0] == 12)
-  {splitEnd[0] = splitEnd[0] - 12}  
-  //end and start are two Numbers that represent start and end time in minutes
-  const end = splitEnd[0] * 60 + Number(splitEnd[1])
-  const start = splitStart[0] * 60 + Number(splitStart[1])
-  //stashes the current hour and minute 
-    let hours = new Date().getHours(); 
-    const min = new Date().getMinutes(); 
-  //changes hours to standard formatting, however, if it is after 8pm it keeps it the same
-    if(hours > 12 && hours < 20)
-    {hours = hours - 12}
-    const timeMins = hours * 60 + min;
-    if(timeMins >= start && timeMins <= end)
-    {currentPeriod = true}
-    else
-    {currentPeriod = false}
-    
-    const periodNumber = periodNum;
-    const startTime = sTime;
-    const endTime = eTime;
-
-
-    return{currentPeriod, periodNumber, startTime, endTime}
+export const Period = function (periodNum, sHour, sMin, eHour, eMin) {
+  const periodNumber = periodNum;
+  let startMin = sMin;
+  let startHour = sHour;
+  let endMin = eMin;
+  let endHour = eHour;
+  //fixes abnormal case for when mins should have 0 as first digit
+  if (startMin < 10) {
+    startMin = "0" + startMin;
+  }
+  if (endMin < 10) {
+    endMin = "0" + endMin;
+  }
+  //if you change anything on line 17 you need to edit the indexes of schedule in currentPeriodNumber function
+  return {periodNumber, startHour, startMin, endHour, endMin}
 }
-
-
+//this is where all database values should be grabbed, constructs periods + returns a schedule that can be gotten at all times
+export const getSchedule = function () {
+  //hardcoding all 7 period variables
+  const per1 = Period("1st", 8, 35, 9, 27);
+  const per2 = Period("2nd", 9, 32, 10, 24,);
+  const per3 = Period("3rd", 10, 29, 11, 27);
+  const per4 = Period("4th", 12, 12, 1, 4);
+  const per5 = Period("5th", 1, 9, 2, 1);
+  const per6 = Period("6th", 2, 6, 2, 58);
+  const per7 = Period("7th", 3, 3, 3, 55);
+  //create an array "schedule" that contains 7 periods
+  const schedule = [per1, per2, per3, per4, per5, per6, per7];
+  return schedule;
+}
+//builds the UI of a period by setting up text for the period box
 export const PeriodBox = function (props) {
-    return(
-    <View 
-        style = {props.isPeriod
+  return (
+    <View
+      style={props.currentPeriod
         ? [styles.periodBox, styles.outlineBox]
         : styles.periodBox
-        }>
-        <Text style = {styles.headerText}>
-        {props.period} Period {'\n'} 
-        </Text>
-        <Text style = {styles.descriptorText}>
-         {props.start} - {props.end}  
-        </Text>
+      }>
+      <Text style={styles.headerText}>
+        {props.periodNumber} Period {'\n'}
+      </Text>
+      <Text style={styles.descriptorText}>
+        {props.startHour}:{props.startMin} - {props.endHour}:{props.endMin}
+      </Text>
     </View>
-    )
-   
+  )
 }
+//returns the current period number, no params, accesses schedule through the function getSchedule
+export const currentPeriodNumber = function () {
+  const hours = new Date().getHours() % 12;
+  const min = new Date().getMinutes();
+  const currentTime = hours * 60 + min;
+  let schedule = getSchedule();
+
+  for (let i = 0; i < schedule.length; i++) {
+    //fixes abnormal case for when hour changes from 12 to 1
+    if (schedule[i].startHour == 12) {
+      schedule[i].startHour -= 12
+      if (schedule[i].endHour == 12) {schedule[i].endHour -= 12 }
+    }
+    //converts all strings (endMin and startMin) to ints
+    schedule[i].endMin = Number(schedule[i].endMin)
+    schedule[i].startMin = Number(schedule[i].startMin)
+        //gets the start time and end time of a period and displays it in minutes
+    const start = schedule[i].startHour * 60 + schedule[i].startMin;
+    const end = schedule[i].endHour * 60 + schedule[i].endMin;
+    //compare currentTime to startTime and endTimes of a period
+    if (currentTime >= start && currentTime <= end) {
+
+      return i + 1;
+    }
+  }
+  
+  return null;
+}
+
+//checks if a period is the current period, accepts period as param and returns true or false
+export const isCurrentPeriod = function (periodNum) {
+  const periodNumber = periodNum.substring(0, 1);
+  return periodNumber == currentPeriodNumber();
+}
+//returns the current day as a string 
 export const currentDay = function () {
   const currentDay = new Date().getDay();
-  let day = "";
-  if(currentDay == 1)
-  {day = "Monday"}
-  if(currentDay == 2)
-  {day = "Tuesday"}
-  if(currentDay == 3)
-  {day = "Wednesday"}
-  if(currentDay == 4)
-  {day = "Thursday"}
-  if(currentDay == 5)
-  {day = "Friday"}
-  if(currentDay == 6)
-  {day = "Saturday"}
-  if(currentDay == 7)
-  {day = "Sunday"}
-  return(day)
+  let day = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+  return day[currentDay];
 }
+
 const styles = StyleSheet.create({
- descriptorText: {
-        color: '#B2B2B2',
-        fontSize: 14,
-        fontFamily: 'Arial',
-        left: 15,
-        bottom: 7,
-},
- headerText: {
-      top: 7,
-      color: '#FFFFFF',
-      fontSize: 16,
-      fontFamily: 'Arial',
-      left: 15,
-    },
- periodBox: {
-        top: 70,
-        backgroundColor: '#222222',
-        marginBottom: 12,
-        width: 370,
-        height: 70,
-        shadowOffset: { height: 4, width: 0 },
-        shadowOpacity: 1,
-        shadowRadius: 4,
-        shadowColor: '#00000040',
-        borderRadius: 15,
-        justifyContent: 'center',
-        marginLeft: 10,
-        marginRight: 10, 
-      },
-outlineBox: {
-        width: 375,
-        height: 70,
-        borderWidth: 3,
-        borderColor: '#D4AF37', 
-      },
-    })
+  descriptorText: {
+    color: '#B2B2B2',
+    fontSize: 14,
+    fontFamily: 'Arial',
+    left: 15,
+    bottom: 7,
+  },
+  headerText: {
+    top: 7,
+    color: '#FFFFFF',
+    fontSize: 16,
+    fontFamily: 'Arial',
+    left: 15,
+  },
+  periodBox: {
+    top: 70,
+    backgroundColor: '#222222',
+    marginBottom: 12,
+    width: 370,
+    height: 70,
+    shadowOffset: { height: 4, width: 0 },
+    shadowOpacity: 1,
+    shadowRadius: 4,
+    shadowColor: '#00000040',
+    borderRadius: 15,
+    justifyContent: 'center',
+    marginLeft: 10,
+    marginRight: 10,
+  },
+  outlineBox: {
+    width: 375,
+    height: 70,
+    borderWidth: 3,
+    borderColor: '#D4AF37',
+  },
+})
