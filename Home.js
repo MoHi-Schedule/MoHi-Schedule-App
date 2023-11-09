@@ -1,6 +1,6 @@
-import {Period, PeriodBox, currentDay, getSchedule, isCurrentPeriod} from './Data'
-import moment from 'moment/moment';
-import { ScrollView, StyleSheet, Text, View ,Image, Pressable,} from 'react-native';
+import {PeriodBox, currentDay, getSchedule, isCurrentPeriod} from './Data'
+import {styles} from './components/stylesheets'
+import {ScrollView, Text, View ,Image, Pressable} from 'react-native';
 
 export const Home = ({navigation}) => {
   const day = currentDay();
@@ -44,46 +44,4 @@ export const Home = ({navigation}) => {
 
 
     )   
-
-
 }
-
-const styles = StyleSheet.create({ 
-  background: {
-    backgroundColor: '#333333',
-    paddingTop: 10,
-  },
-  headerBox: {
-    width: 370,
-    height: 50,
-    backgroundColor: '#DCCD98',
-    justifyContent: 'center',
-    top: 50,
-    borderRadius: 15,
-    left: 10,
-    right: 10,
-  },
-  headerText: {
-    fontFamily: 'Arial',
-    fontSize: 20, 
-    textAlign: 'center',
-  },
-  dateBox: {
-    top: 60,
-  },
-  dayText: {
-    color: '#FFFFFF',
-    fontFamily: 'Arial',
-    fontSize: 25,
-    fontWeight: '400',
-    textAlign: 'center',
-  },
-  image: {
-    width : 50, 
-    height: 50,
-    position: 'absolute',
-    top : 370,  
-    right : 150,
-    left : 150,
-  }
-})

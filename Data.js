@@ -1,5 +1,5 @@
-import { Text, View, StyleSheet } from 'react-native';
-import moment from 'moment/moment';
+import { Text, View} from 'react-native';
+import {styles} from './components/stylesheets'
 export const Period = function (periodNum, sHour, sMin, eHour, eMin) {
   const periodNumber = periodNum;
   let startMin = sMin;
@@ -38,7 +38,7 @@ export const PeriodBox = function (props) {
         ? [styles.periodBox, styles.outlineBox]
         : styles.periodBox
       }>
-      <Text style={styles.headerText}>
+      <Text style={styles.periodNumberText}>
         {props.periodNumber} Period {'\n'}
       </Text>
       <Text style={styles.descriptorText}>
@@ -87,41 +87,3 @@ export const currentDay = function () {
   let day = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
   return day[currentDay];
 }
-
-const styles = StyleSheet.create({
-  descriptorText: {
-    color: '#B2B2B2',
-    fontSize: 14,
-    fontFamily: 'Arial',
-    left: 15,
-    bottom: 7,
-  },
-  headerText: {
-    top: 7,
-    color: '#FFFFFF',
-    fontSize: 16,
-    fontFamily: 'Arial',
-    left: 15,
-  },
-  periodBox: {
-    top: 70,
-    backgroundColor: '#222222',
-    marginBottom: 12,
-    width: 370,
-    height: 70,
-    shadowOffset: { height: 4, width: 0 },
-    shadowOpacity: 1,
-    shadowRadius: 4,
-    shadowColor: '#00000040',
-    borderRadius: 15,
-    justifyContent: 'center',
-    marginLeft: 10,
-    marginRight: 10,
-  },
-  outlineBox: {
-    width: 375,
-    height: 70,
-    borderWidth: 3,
-    borderColor: '#D4AF37',
-  },
-})

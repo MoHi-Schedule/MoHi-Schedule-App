@@ -1,11 +1,7 @@
-import { StatusBar } from 'expo-status-bar';
-import moment from 'moment/moment';
-import {NavigationContainer} from '@react-navigation/native'
-import {createNativeStackNavigator} from '@react-navigation/native-stack';
+import {styles} from './components/stylesheets'
 import * as React from 'react';
-import {Period,SplitEndCreate,currentPeriodNumber, getSchedule} from './Data';
-import {Home} from './Home';
-import { ScrollView, StyleSheet, Text, View ,Image, Pressable} from 'react-native';
+import {currentPeriodNumber, getSchedule} from './Data';
+import {Text, View ,Image, Pressable} from 'react-native';
 
 export const TimeLeft = ({navigation}) => {
   let schedule = getSchedule();
@@ -41,25 +37,3 @@ return (
     </View>)
   }
 }
-
-const styles = StyleSheet.create({ 
-  background:{
-    backgroundColor: '#333333',
-    paddingTop: 10,
-  },
-  image:{
-    width : 50, 
-    height: 50,
-    position: 'absolute',
-    left: 150,
-    right: 150,
-    top: 370,
-  },
-  dayText: {
-    top : 50,
-    textAlign :'center',
-    color: '#000000',
-    fontFamily: 'Arial',
-    fontSize: 25,
-},
-})
