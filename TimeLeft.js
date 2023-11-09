@@ -1,7 +1,7 @@
 import {styles} from './components/stylesheets'
 import * as React from 'react';
 import {currentPeriodNumber, getSchedule} from './Data';
-import {Text, View ,Image, Pressable} from 'react-native';
+import {Text, View ,Image, Pressable, ScrollView} from 'react-native';
 
 export const TimeLeft = ({navigation}) => {
   let schedule = getSchedule();
@@ -14,26 +14,26 @@ export const TimeLeft = ({navigation}) => {
       var currentTime = (hours * 60) + min;
       
 return (
-  <View style = {styles.background}>
+  <ScrollView style = {styles.background}>
   
-    <Text style = {styles.dayText}> The Current Period is {currentPeriod} </Text>
-    <Text style = {styles.dayText}> {endTime - currentTime} Minutes Left</Text>
+    <Text style = {styles.headerText}> The Current Period is {currentPeriod} </Text>
+    <Text style = {styles.headerText}> {endTime - currentTime} Minutes Left</Text>
     
 
     <Pressable onPress={() => navigation.navigate('Home', {name: 'Home'})}>
       <Image style = {styles.image} source={require("./assets/info.png")}  />
     </Pressable>
-  </View>
+  </ScrollView>
 )}
   else
   {
     return(  
-    <View style = {styles.background}>
-  
-      <Text style = {styles.dayText}> Not currently school hours!</Text>
+    <ScrollView style = {styles.background}>
+      <Text style = {styles.headerText}> Not currently school hours!</Text>
       <Pressable onPress={() => navigation.navigate('Home', {name: 'Home'})}>
         <Image style = {styles.image} source={require("./assets/info.png")}  />
       </Pressable>
-    </View>)
+    </ScrollView>
+    )
   }
 }
