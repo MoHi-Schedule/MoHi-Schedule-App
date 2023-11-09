@@ -1,0 +1,76 @@
+import { StyleSheet } from "react-native";
+
+export const styles = StyleSheet.create({ 
+    background:{
+      backgroundColor: '#333333',
+      paddingTop: 10,
+    },
+    image:{
+      width : 50, 
+      height: 50,
+      position: 'absolute',
+      left: 150,
+      right: 150,
+      top: 370,
+    },
+    dayText: {
+      top : 50,
+      textAlign :'center',
+      color: '#000000',
+      fontFamily: 'Arial',
+      fontSize: 25,
+  },
+  headerBox: {
+    width: 370,
+    height: 50,
+    backgroundColor: '#DCCD98',
+    justifyContent: 'center',
+    top: 50,
+    borderRadius: 15,
+    left: 10,
+    right: 10,
+  },
+  headerText: {
+    fontFamily: 'Arial',
+    fontSize: 20, 
+    textAlign: 'center',
+  },
+  dateBox: {
+    top: 60,
+  },
+  descriptorText: {
+    color: '#B2B2B2',
+    fontSize: 14,
+    fontFamily: 'Arial',
+    left: 15,
+    bottom: 7,
+  },
+  periodNumberText: {
+    top: 7,
+    color: '#FFFFFF',
+    fontSize: 16,
+    fontFamily: 'Arial',
+    left: 15,
+  },
+  periodBox: {
+    top: 70,
+    backgroundColor: '#222222',
+    marginBottom: 12,
+    width: 370,
+    height: 70,
+    shadowOffset: { height: 4, width: 0 },
+    shadowOpacity: 1,
+    shadowRadius: 4,
+    shadowColor: '#00000040',
+    borderRadius: 15,
+    justifyContent: 'center',
+    marginLeft: 10,
+    marginRight: 10,
+  },
+  outlineBox: {
+    width: 375,
+    height: 70,
+    borderWidth: 3,
+    borderColor: '#D4AF37',
+  },
+  })
