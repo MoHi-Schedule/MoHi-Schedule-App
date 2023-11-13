@@ -16,7 +16,7 @@ export const Home = ({navigation}) => {
         </View>
         <View style = {styles.headerBox}>
           <Text style = {styles.headerText}>
-            Monarch Highschool Schedule
+            Monarch High School Schedule
           </Text>
         </View>
 

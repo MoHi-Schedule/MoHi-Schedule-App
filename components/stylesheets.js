@@ -1,29 +1,28 @@
 import { StyleSheet } from "react-native";
 
 export const styles = StyleSheet.create({ 
-    background:{
-      backgroundColor: '#333333',
-      paddingTop: 10,
+  background:{
+    backgroundColor: '#333333',
     },
-    image:{
-      width : 50, 
-      height: 50,
-      position: 'absolute',
-      left: 150,
-      right: 150,
-      top: 370,
+  image:{
+    width : 50, 
+    height: 50,
+    position: 'absolute',
+    left: 150,
+    right: 150,
+    top: 370,
     },
-    dayText: {
-      top : 50,
-      textAlign :'center',
-      color: '#000000',
-      fontFamily: 'Arial',
-      fontSize: 25,
+  dayText: {
+    top : 50,
+    textAlign :'center',
+    color: '#FFFFFF',
+    fontFamily: 'Arial',
+    fontSize: 25,
   },
   headerBox: {
     width: 370,
     height: 50,
-    backgroundColor: '#DCCD98',
+    backgroundColor: '#BBA53D',
     justifyContent: 'center',
     top: 50,
     borderRadius: 15,
@@ -36,7 +35,7 @@ export const styles = StyleSheet.create({
     textAlign: 'center',
   },
   dateBox: {
-    top: 60,
+    top: 10,
   },
   descriptorText: {
     color: '#B2B2B2',
