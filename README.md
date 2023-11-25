@@ -1,2 +1,2 @@
 # MoHi-Schedule-App
-## One step for Max and I, one giant leap for all app developers!
+## A schedule app for Monarch High School to help with professional development learning 
