@@ -34,6 +34,7 @@ export const getSchedule = function () {
 export const PeriodBox = function (props) {
   return (
     <View
+    //if period is current period, use outlineBox style to highlight it alongside using the periodBox style, if not just use the periodBox style
       style={props.currentPeriod
         ? [styles.periodBox, styles.outlineBox]
         : styles.periodBox
@@ -47,13 +48,11 @@ export const PeriodBox = function (props) {
     </View>
   )
 }
-//returns the current period number, no params, accesses schedule through the function getSchedule
-export const currentPeriodNumber = function () {
+//returns the current period number, receives param schedule, iterates through each period, if current time is within start and end time of a period return period number, if there is no current period return null
+export const currentPeriodNumber = function (schedule) {
   const hours = new Date().getHours() % 12;
   const min = new Date().getMinutes();
   const currentTime = hours * 60 + min;
-  let schedule = getSchedule();
-
   for (let i = 0; i < schedule.length; i++) {
     //fixes abnormal case for when hour changes from 12 to 1
     if (schedule[i].startHour == 12) {
@@ -76,10 +75,10 @@ export const currentPeriodNumber = function () {
   return null;
 }
 
-//checks if a period is the current period, accepts period as param and returns true or false
-export const isCurrentPeriod = function (periodNum) {
+//checks if a period is the current period, accepts period as param and returns true or false, also accepts schedule as a param so it can access currentPeriodNumber
+export const isCurrentPeriod = function (periodNum, schedule) {
   const periodNumber = periodNum.substring(0, 1);
-  return periodNumber == currentPeriodNumber();
+  return periodNumber == currentPeriodNumber(schedule);
 }
 //returns the current day as a string 
 export const currentDay = function () {
