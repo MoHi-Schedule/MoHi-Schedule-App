@@ -1,4 +1,4 @@
-import {styles} from './components/stylesheets'
+import {styles} from './stylesheets'
 import * as React from 'react';
 import {currentPeriodNumber, getSchedule} from './Data';
 import {Text, View ,Image, Pressable, ScrollView} from 'react-native';

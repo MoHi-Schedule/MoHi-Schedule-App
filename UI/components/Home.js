@@ -1,5 +1,5 @@
 import {PeriodBox, currentDay, getSchedule, isCurrentPeriod} from './Data'
-import {styles} from './components/stylesheets'
+import {styles} from './stylesheets'
 import {ScrollView, Text, View ,Image, Pressable} from 'react-native';
 
 export const Home = ({navigation}) => {
