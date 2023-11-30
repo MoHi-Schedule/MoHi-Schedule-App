@@ -1,5 +1,5 @@
 import { Text, View} from 'react-native';
-import {styles} from './components/stylesheets'
+import {styles} from './stylesheets'
 export const Period = function (periodNum, sHour, sMin, eHour, eMin) {
   const periodNumber = periodNum;
   let startMin = sMin;
