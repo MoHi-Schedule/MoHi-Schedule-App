@@ -23,7 +23,7 @@ export const TimeLeft = (props) => {
           <Text style = {styles.headerText}> {endTime - currentTime} Minutes Left</Text>
           {/*button to navigate back to homescreen*/}
           <Pressable onPress={() => navigation.navigate('Home', {name: 'Home'})}>
-            <Image style = {styles.image} source={require("../assets/info.png")}  />
+            <Image style = {styles.image} source={require("../assets/switchscreen.png")}  />
           </Pressable>
         </ScrollView>
         )}
@@ -35,7 +35,7 @@ export const TimeLeft = (props) => {
           <Text style = {styles.headerText}> Not currently school hours!</Text>
           {/*button to navigate back to homescreen*/}
           <Pressable onPress={() => navigation.navigate('Home', {name: 'Home'})}>
-            <Image style = {styles.image} source={require("../assets/info.png")}  />
+            <Image style = {styles.image} source={require("../assets/switchscreen.png")}  />
           </Pressable>
         </ScrollView>
         )}

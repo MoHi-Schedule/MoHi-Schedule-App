@@ -14,7 +14,7 @@ export const Home = (props) => {
 
     {/*adds a button to navigate to TimeLeft screen*/}
           <Pressable onPress={() => navigation.navigate('TimeLeft', {name: 'TimeLeft'})}>
-           <Image style = {styles.image} source={require("../assets/info.png")}  />
+           <Image style = {styles.image} source={require("../assets/switchscreen.png")}  />
           </Pressable>
 
     {/*display for the header box and header text at the top of the screen*/}
