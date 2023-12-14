@@ -1,5 +1,3 @@
-import { Text, View} from 'react-native';
-import {styles} from './stylesheets'
 export const Period = function (periodNum, sHour, sMin, eHour, eMin) {
   const periodNumber = periodNum;
   let startMin = sMin;
@@ -30,24 +28,7 @@ export const getSchedule = function () {
   const schedule = [per1, per2, per3, per4, per5, per6, per7];
   return schedule;
 }
-//builds the UI of a period by setting up text for the period box
-export const PeriodBox = function (props) {
-  return (
-    <View
-    //if period is current period, use outlineBox style to highlight it alongside using the periodBox style, if not just use the periodBox style
-      style={props.currentPeriod
-        ? [styles.periodBox, styles.outlineBox]
-        : styles.periodBox
-      }>
-      <Text style={styles.periodNumberText}>
-        {props.periodNumber} Period {'\n'}
-      </Text>
-      <Text style={styles.descriptorText}>
-        {props.startHour}:{props.startMin} - {props.endHour}:{props.endMin}
-      </Text>
-    </View>
-  )
-}
+
 //returns the current period number, receives param schedule, iterates through each period, if current time is within start and end time of a period return period number, if there is no current period return null
 export const currentPeriodNumber = function (schedule) {
   const hours = new Date().getHours() % 12;

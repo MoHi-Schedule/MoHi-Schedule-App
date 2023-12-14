@@ -4,7 +4,6 @@ import {currentPeriodNumber, } from './Data';
 import {Text,Image, Pressable, ScrollView} from 'react-native';
 import {useNavigation} from '@react-navigation/native'
 
-
 export const TimeLeft = (props) => {
   const navigation = useNavigation();
   let schedule = props.schedule;
@@ -17,6 +16,7 @@ export const TimeLeft = (props) => {
       var currentTime = (hours * 60) + min;  
       //screen if there is a current period
       return (
+        <FullScreenView>
         <ScrollView style = {styles.background}>
           {/*displays current period and how much time left in current period*/}
           <Text style = {styles.headerText}> The Current Period is {currentPeriod} </Text>
@@ -26,11 +26,13 @@ export const TimeLeft = (props) => {
             <Image style = {styles.image} source={require("../assets/switchscreen.png")}  />
           </Pressable>
         </ScrollView>
+        </FullScreenView>
         )}
 
   //if there isn't a current period return a different view
   else{
       return(  
+        <FullScreenView>
         <ScrollView style = {styles.background}>
           <Text style = {styles.headerText}> Not currently school hours!</Text>
           {/*button to navigate back to homescreen*/}
@@ -38,5 +40,6 @@ export const TimeLeft = (props) => {
             <Image style = {styles.image} source={require("../assets/switchscreen.png")}  />
           </Pressable>
         </ScrollView>
+        </FullScreenView>
         )}
       }
