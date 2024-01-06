@@ -1,3 +1,4 @@
+import {StyleSheet, View, Text} from 'react-native';
 export default function HeaderBox (props){
     return(
         <View style = {styles.headerBox}>

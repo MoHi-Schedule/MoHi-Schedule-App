@@ -1,8 +1,9 @@
 import {styles} from './stylesheets'
 import * as React from 'react';
-import {currentPeriodNumber, } from './Data';
+import {currentPeriodNumber, } from '../Data/Data';
 import {Text,Image, Pressable, ScrollView} from 'react-native';
-import {useNavigation} from '@react-navigation/native'
+import {useNavigation} from '@react-navigation/native';
+import FullScreenView from './FullScreenView';
 
 export const TimeLeft = (props) => {
   const navigation = useNavigation();
