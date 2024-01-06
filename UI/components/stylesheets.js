@@ -1,4 +1,4 @@
-import { StyleSheet } from "react-native";
+import {StyleSheet} from 'react-native';
 
 export const styles = StyleSheet.create({ 
   background:{
@@ -21,18 +21,6 @@ export const styles = StyleSheet.create({
   dateBox: {
     top: 10,
   },
-  descriptorText: {
-    color: '#B2B2B2',
-    fontSize: 14,
-    fontFamily: 'Arial',
-    left: 15,
-    bottom: 7,
-  },
-  periodNumberText: {
-    top: 7,
-    color: '#FFFFFF',
-    fontSize: 16,
-    fontFamily: 'Arial',
-    left: 15,
-  },
+
+
   })

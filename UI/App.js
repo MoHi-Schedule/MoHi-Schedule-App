@@ -3,7 +3,7 @@ import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import * as React from 'react';
 import {Home} from './components/Home';
 import {TimeLeft} from './components/TimeLeft';
-import {getSchedule} from './components/Data';
+import {getSchedule} from './Data/Data';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 
 const schedules = getSchedule();
